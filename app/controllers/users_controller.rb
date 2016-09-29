@@ -1,4 +1,4 @@
-class UsersController < ProtectedController
+class UsersController < OpenReadController
   skip_before_action :authenticate, only: [:signup, :signin]
 
   # POST '/sign-up'
@@ -41,6 +41,11 @@ class UsersController < ProtectedController
     else
       head :no_content
     end
+  end
+
+  def cocktails
+    @cocktails = Cocktail.find(params[:id])
+    @cocktails = @user.cocktails
   end
 
   def index
