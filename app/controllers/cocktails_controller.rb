@@ -61,6 +61,6 @@ class CocktailsController < OpenReadController
   end
 
   def cocktail_params
-    params.require(:cocktail).permit(:name, :category, :imageurl, :user_id)
+    params.require(:cocktail).permit(:name, :category, :imageurl, :user_id, :ingredients, :directions)
   end
 end
