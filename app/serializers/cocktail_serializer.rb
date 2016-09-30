@@ -1,6 +1,5 @@
 class CocktailSerializer < ActiveModel::Serializer
-  attributes :id, :name, :category, :ingredients, :directions, :imageurl,
-  :user_id, :editable
+  attributes :id, :name, :category, :imageurl, :directions, :user_id, :editable
   has_one :user
 
   def editable
