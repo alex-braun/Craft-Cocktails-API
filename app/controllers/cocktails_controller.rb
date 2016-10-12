@@ -35,8 +35,8 @@ class CocktailsController < OpenReadController
   # PATCH/PUT /cocktails/1
   # PATCH/PUT /cocktails/1.json
   def update
-    @cocktail = current_user.cocktails.find(params[:id])
-    # @cocktail = Cocktail.find(params[:id])
+    # @cocktail = current_user.cocktails.find(params[:id])
+    @cocktail = Cocktail.find(params[:id])
 
     if @cocktail.update(cocktail_params)
       head :no_content
@@ -49,18 +49,17 @@ class CocktailsController < OpenReadController
   # DELETE /cocktails/1.json
   def destroy
     @cocktail.destroy
-
     head :no_content
   end
 
   private
 
   def set_cocktail
-    # @cocktail = Cocktail.find(params[:id])
-    @cocktail = current_user.cocktails.find(params[:id])
+    @cocktail = Cocktail.find(params[:id])
+    # @cocktail = current_user.cocktails.find(params[:id])
   end
 
   def cocktail_params
-    params.require(:cocktail).permit(:name, :category, :imageurl, :ingredients, :user_id, :directions)
+    params.require(:cocktail).permit(:name, :category, :imageurl, :ingredients, :directions)
   end
 end
